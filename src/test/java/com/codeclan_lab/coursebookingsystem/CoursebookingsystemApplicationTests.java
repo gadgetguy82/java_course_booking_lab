@@ -35,14 +35,14 @@ public class CoursebookingsystemApplicationTests {
 	public void canCreateCourse() {
 		Course course = new Course("Ruby", "Edinburgh", 5);
 		courseRepository.save(course);
-		assertEquals(new Long(1), course.getId());
+		assertEquals(new Long(5), course.getId());
 	}
 
 	@Test
 	public void canCreateCustomer() {
 		Customer customer = new Customer("Bob Smith", "Glasgow", 34);
 		customerRepository.save(customer);
-		assertEquals(new Long(1), customer.getId());
+		assertEquals(new Long(4), customer.getId());
 	}
 
 	@Test
@@ -51,9 +51,9 @@ public class CoursebookingsystemApplicationTests {
 		courseRepository.save(course);
 		Customer customer = new Customer("Bob Smith", "Glasgow", 34);
 		customerRepository.save(customer);
-		Booking booking = new Booking("23 May 2019", customer, course);
+		Booking booking = new Booking("23-05-19", customer, course);
 		bookingRepository.save(booking);
-		assertEquals(new Long(1), booking.getId());
+		assertEquals(new Long(5), booking.getId());
 	}
 
 }
