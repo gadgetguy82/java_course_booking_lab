@@ -24,7 +24,7 @@ public class Customer {
   private int age;
 
   @JsonIgnoreProperties({"customer", "course"})
-  @OneToMany(mappedBy = "customer")
+  @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   List<Booking> bookings;
 
   public Customer(String name, String town, int age) {
