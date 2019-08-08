@@ -1,6 +1,8 @@
 package com.codeclan_lab.coursebookingsystem;
 
+import com.codeclan_lab.coursebookingsystem.models.Booking;
 import com.codeclan_lab.coursebookingsystem.models.Course;
+import com.codeclan_lab.coursebookingsystem.models.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,4 +24,15 @@ public class CoursebookingsystemApplicationTests {
 		assertEquals("Ruby", course.getName());
 	}
 
+	@Test
+	public void canCreateBooking() {
+		Booking booking = new Booking("23 May 2019");
+		assertEquals("23 May 2019", booking.getDate());
+	}
+
+	@Test
+	public void canCreateCustomer() {
+		Customer customer = new Customer("Bob Smith", "Glasgow", 34);
+		assertEquals("Bob Smith", customer.getName());
+	}
 }
