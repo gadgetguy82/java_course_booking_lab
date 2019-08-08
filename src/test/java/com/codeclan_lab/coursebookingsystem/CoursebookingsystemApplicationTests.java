@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -56,4 +58,45 @@ public class CoursebookingsystemApplicationTests {
 		assertEquals(new Long(5), booking.getId());
 	}
 
+	@Test
+	public void canFindCoursesByRating() {
+		List<Course> found = courseRepository.findCoursesByRating(5);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindCustomersByCourseId() {
+		List<Customer> found = customerRepository.findCustomersByCourseId(1L);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindCoursesByCustomerId() {
+		List<Course> found = courseRepository.findCoursesByCustomerId(1L);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindBookingsByDate() {
+		List<Booking> found = bookingRepository.findBookingsByDate("12-04-19");
+		assertEquals(new Long(2), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindCustomersByTownAndCourseId() {
+		List<Customer> found = customerRepository.findCustomersByTownAndCourseId("Edinburgh", 1L);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindCustomersByMinimumAgeTownAndCourseId() {
+		List<Customer> found = customerRepository.findCustomersByMinimumAgeTownAndCourseId(20, "Edinburgh", 1L);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
+
+	@Test
+	public void canFindCustomersByMinimumAgeTownAndCourseIdIgnoringCaseSensitivity() {
+		List<Customer> found = customerRepository.findCustomersByMinimumAgeTownAndCourseId(20, "eDinBuRgh", 1L);
+		assertEquals(new Long(1), found.get(0).getId());
+	}
 }

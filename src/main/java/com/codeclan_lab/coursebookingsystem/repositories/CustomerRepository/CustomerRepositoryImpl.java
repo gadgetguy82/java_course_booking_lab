@@ -1,5 +1,6 @@
 package com.codeclan_lab.coursebookingsystem.repositories.CustomerRepository;
 
+import com.codeclan_lab.coursebookingsystem.helpers.Helper;
 import com.codeclan_lab.coursebookingsystem.models.Customer;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -36,6 +37,9 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
   public List<Customer> findCustomersByTownAndCourseId(String town, Long courseId) {
     List<Customer> results = null;
     Session session = entityManager.unwrap(Session.class);
+
+    town = Helper.capitalise(town);
+
     try{
       Criteria cr = session.createCriteria(Customer.class);
       cr.createAlias("bookings", "bookingsAlias");
@@ -54,6 +58,9 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
   public List<Customer> findCustomersByMinimumAgeTownAndCourseId(int age, String town, Long courseId) {
     List<Customer> results = null;
     Session session = entityManager.unwrap(Session.class);
+
+    town = Helper.capitalise(town);
+
     try{
       Criteria cr = session.createCriteria(Customer.class);
       cr.createAlias("bookings", "bookingsAlias");
