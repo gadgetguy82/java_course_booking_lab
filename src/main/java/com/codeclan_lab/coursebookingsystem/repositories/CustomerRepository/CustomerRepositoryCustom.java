@@ -9,4 +9,6 @@ public interface CustomerRepositoryCustom {
   List<Customer> findCustomersByCourseId(Long courseId);
 
   List<Customer> findCustomersByTownAndCourseId(String town, Long courseId);
+
+  List<Customer> findCustomersByMinimumAgeTownAndCourseId(int age, String town, Long courseId);
 }
