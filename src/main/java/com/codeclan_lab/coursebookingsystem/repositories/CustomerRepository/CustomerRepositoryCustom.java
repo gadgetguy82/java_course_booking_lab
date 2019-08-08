@@ -8,4 +8,5 @@ public interface CustomerRepositoryCustom {
 
   List<Customer> findCustomersByCourseId(Long courseId);
 
+  List<Customer> findCustomersByTownAndCourseId(String town, Long courseId);
 }
